@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: member_value_windows
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [scenario, member_id, window_name]
+  - name: member_projected_value
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [scenario, member_id]
+    columns:
+      - name: projected_value_24m
+        data_tests: [not_null]
+  - name: development_factors
+    columns:
+      - name: factor_to_next
+        data_tests: [not_null]
