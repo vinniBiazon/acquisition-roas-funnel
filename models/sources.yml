@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Synthetic CSVs written by data/generate.py
+    meta:
+      external_location: "data/raw/{name}.csv"
+    tables:
+      - name: signup_starts
+      - name: members
+      - name: payments
+      - name: ad_spend
