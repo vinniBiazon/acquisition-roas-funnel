@@ -1,0 +1,7 @@
+acquisition_readouts:
+  target: local
+  outputs:
+    local:
+      type: duckdb
+      path: acquisition.duckdb
+      threads: 4

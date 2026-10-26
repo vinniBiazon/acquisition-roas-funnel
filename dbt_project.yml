@@ -1,0 +1,26 @@
+name: acquisition_readouts
+version: "1.0.0"
+config-version: 2
+profile: acquisition_readouts
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  acquisition_readouts:
+    staging:
+      +materialized: view
+    funnel:
+      +materialized: table
+    value:
+      +materialized: table
+
+# The study design lives here, in one place
+vars:
+  as_of: "2026-10-25"           # last day of data
+  backtest_as_of: "2024-10-31"  # pretend it is this date, project, then compare with what happened
+  max_unmapped_share: 0.01      # data test: share of paid starts whose UTM does not map to a channel
