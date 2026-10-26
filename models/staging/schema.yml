@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_signup_starts
+    columns:
+      - name: visitor_id
+        data_tests: [unique, not_null]
+      - name: last_step_reached
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["email", "profile", "level_test", "goal", "plan_choice"]
+
+  - name: stg_members
+    columns:
+      - name: member_id
+        data_tests: [unique, not_null]
+      - name: visitor_id
+        data_tests:
+          - unique
+          - relationships:
+              arguments:
+                to: ref('stg_signup_starts')
+                field: visitor_id
+
+  - name: stg_payments
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [member_id, paid_on]
+    columns:
+      - name: member_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_members')
+                field: member_id
+
+  - name: int_starts_attributed
+    columns:
+      - name: channel
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["paid_search", "paid_social", "affiliate", "organic_search", "referral", "unmapped"]
