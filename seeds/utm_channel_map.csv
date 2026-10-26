@@ -1,0 +1,11 @@
+source_clean,medium_clean,channel
+google,cpc,paid_search
+bing,cpc,paid_search
+facebook,paid_social,paid_social
+facebook,paid,paid_social
+fb,paid_social,paid_social
+instagram,paid_social,paid_social
+ig,paid_social,paid_social
+lingopartners,affiliate,affiliate
+studyhub,affiliate,affiliate
+invite,referral,referral
